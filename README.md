@@ -108,6 +108,26 @@ Agent will:
 3. Use regex or parsing functions to extract text
 ```
 
+## Anarchy-Inference Examples
+
+The repository includes several example Anarchy-Inference scripts (`.a.i` files) in the `examples/anarchy-inference` directory:
+
+- `example_task.a.i`: Basic file operations and web requests
+- `browser_automation.a.i`: Web browser automation
+- `file_system_operations.a.i`: File system operations
+- `memory_operations.a.i`: Memory and state persistence
+- `complete_workflow.a.i`: End-to-end workflow example
+
+To run these examples:
+
+```bash
+# Using pre-built binary
+./anarchy-agent --example example_task
+
+# Or specify a custom script
+./anarchy-agent --script path/to/your_script.a.i
+```
+
 ## Contributing
 
 Contributions are welcome! Here's how you can help:
