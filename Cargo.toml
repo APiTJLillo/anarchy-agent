@@ -1,0 +1,55 @@
+[package]
+name = "anarchy-agent"
+version = "0.1.0"
+edition = "2021"
+description = "A fully local, cross-platform AI assistant using the Anarchy-Inference language"
+authors = ["APiTJLillo"]
+license = "MIT"
+repository = "https://github.com/APiTJLillo/anarchy-agent"
+
+[dependencies]
+# Core dependencies
+tokio = { version = "1.28", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+log = "0.4"
+env_logger = "0.10"
+
+# LLM integration
+llm = "0.1.1" # Example LLM library, replace with actual implementation
+
+# Filesystem and OS interaction
+dirs = "5.0"
+walkdir = "2.3"
+regex = "1.8"
+
+# Browser automation
+fantoccini = "0.19" # WebDriver client
+
+# UI (Tauri)
+tauri = { version = "1.4", features = ["api-all"] }
+
+[build-dependencies]
+tauri-build = { version = "1.4", features = [] }
+
+[features]
+default = ["tauri/default"]
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
+
+[workspace]
+members = [
+  "src/core",
+  "src/planner",
+  "src/executor",
+  "src/memory",
+  "src/browser",
+  "src/system"
+]

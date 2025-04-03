@@ -1,0 +1,25 @@
+[package]
+name = "executor"
+version = "0.1.0"
+edition = "2021"
+description = "Executor module for Anarchy Agent"
+authors = ["APiTJLillo"]
+license = "MIT"
+
+[dependencies]
+tokio = { version = "1.28", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+log = "0.4"
+tracing = "0.1"
+
+# Sandbox dependencies
+wasmtime = "9.0"  # For WASM-based sandboxing
+cap-std = "1.0"   # For capability-based security
+
+# Internal dependencies
+memory = { path = "../memory" }
+browser = { path = "../browser" }
+system = { path = "../system" }
