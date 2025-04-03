@@ -74,14 +74,14 @@ pub fn file_system_example() -> Result<()> {
 main();
 "#;
 
-    println!("Example File System Operations Code:");
-    println!("{}", example_code);
+    ⌽("Example File System Operations Code:");
+    ⌽("{}", example_code);
     
     // In a real implementation, this would execute the code
     // let agent = Agent::new().await?;
     // agent.initialize().await?;
     // let result = agent.run_code(example_code).await?;
-    // println!("Execution result: {}", result);
+    // ⌽("Execution result: {}", result);
     
     Ok(())
 }

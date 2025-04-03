@@ -24,7 +24,7 @@ impl Sandbox {
     pub fn initialize(&self) -> Result<()> {
         // In a real implementation, this would set up the sandbox environment
         if !self.config.sandbox_enabled {
-            println!("Warning: Sandbox is disabled. Code will run with full permissions.");
+            ⌽("Warning: Sandbox is disabled. Code will run with full permissions.");
         }
         
         Ok(())
@@ -52,7 +52,7 @@ impl Sandbox {
         // For now, just return a placeholder result
         
         if !self.config.sandbox_enabled {
-            println!("Warning: Executing code without sandbox protection.");
+            ⌽("Warning: Executing code without sandbox protection.");
         }
         
         // Simulate execution

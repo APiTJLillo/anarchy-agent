@@ -75,7 +75,7 @@ pub mod file {
         // std::fs::write(&full_path, contents)?;
         
         // For now, just log the operation
-        println!("Writing to file: {}", path);
+        ⌽("Writing to file: {}", path);
         
         Ok(())
     }
@@ -100,7 +100,7 @@ pub mod file {
         // }
         
         // For now, just log the operation
-        println!("Removing path: {}", path);
+        ⌽("Removing path: {}", path);
         
         Ok(())
     }
@@ -124,7 +124,7 @@ pub mod file {
         // std::fs::copy(&full_src, &full_dst)?;
         
         // For now, just log the operation
-        println!("Copying file from {} to {}", src, dst);
+        ⌽("Copying file from {} to {}", src, dst);
         
         Ok(())
     }
@@ -148,7 +148,7 @@ pub mod file {
         // std::fs::rename(&full_src, &full_dst)?;
         
         // For now, just log the operation
-        println!("Moving file from {} to {}", src, dst);
+        ⌽("Moving file from {} to {}", src, dst);
         
         Ok(())
     }

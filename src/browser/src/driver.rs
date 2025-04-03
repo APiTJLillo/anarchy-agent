@@ -36,7 +36,7 @@ impl WebDriver {
         // client.goto(url).await?;
         
         // For now, just log the operation
-        println!("Navigating to: {}", url);
+        ⌽("Navigating to: {}", url);
         
         Ok(())
     }
@@ -52,7 +52,7 @@ impl WebDriver {
         // element.click().await?;
         
         // For now, just log the operation
-        println!("Clicking on: {}", selector);
+        ⌽("Clicking on: {}", selector);
         
         Ok(())
     }
@@ -68,7 +68,7 @@ impl WebDriver {
         // element.send_keys(text).await?;
         
         // For now, just log the operation
-        println!("Inputting text into {}: {}", selector, text);
+        ⌽("Inputting text into {}: {}", selector, text);
         
         Ok(())
     }
@@ -113,7 +113,7 @@ impl WebDriver {
         // }
         
         // For now, just log the operation
-        println!("Closing browser");
+        ⌽("Closing browser");
         
         Ok(())
     }

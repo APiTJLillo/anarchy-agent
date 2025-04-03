@@ -97,7 +97,7 @@ impl Database {
         // )?;
         
         // For now, just log the operation
-        println!("Stored execution: {} at {}", id, timestamp);
+        ⌽("Stored execution: {} at {}", id, timestamp);
         
         Ok(())
     }
@@ -146,7 +146,7 @@ impl Database {
         // )?;
         
         // For now, just log the operation
-        println!("Set key-value: {} = {}", key, value);
+        ⌽("Set key-value: {} = {}", key, value);
         
         Ok(())
     }
@@ -177,7 +177,7 @@ impl Database {
         // conn.execute("DELETE FROM key_values WHERE key = ?", [key])?;
         
         // For now, just log the operation
-        println!("Deleted key: {}", key);
+        ⌽("Deleted key: {}", key);
         
         Ok(())
     }

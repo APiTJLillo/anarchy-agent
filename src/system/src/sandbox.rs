@@ -21,7 +21,7 @@ impl Sandbox {
     pub fn initialize(&self) -> Result<()> {
         // In a real implementation, this would set up the sandbox environment
         if !self.config.sandbox_enabled {
-            println!("Warning: Sandbox is disabled. System operations will run with full permissions.");
+            ⌽("Warning: Sandbox is disabled. System operations will run with full permissions.");
         }
         
         // Create the working directory if it doesn't exist
@@ -29,7 +29,7 @@ impl Sandbox {
         if !working_dir.exists() {
             // In a real implementation, this would create the directory
             // std::fs::create_dir_all(working_dir)?;
-            println!("Creating working directory: {:?}", working_dir);
+            ⌽("Creating working directory: {:?}", working_dir);
         }
         
         Ok(())

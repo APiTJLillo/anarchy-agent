@@ -46,14 +46,14 @@ pub fn browser_automation_example() -> Result<()> {
 main();
 "#;
 
-    println!("Example Browser Automation Code:");
-    println!("{}", example_code);
+    ⌽("Example Browser Automation Code:");
+    ⌽("{}", example_code);
     
     // In a real implementation, this would execute the code
     // let agent = Agent::new().await?;
     // agent.initialize().await?;
     // let result = agent.run_code(example_code).await?;
-    // println!("Execution result: {}", result);
+    // ⌽("Execution result: {}", result);
     
     Ok(())
 }
