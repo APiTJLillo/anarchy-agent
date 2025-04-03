@@ -35,15 +35,36 @@ The system consists of several core modules:
 
 ## Getting Started
 
-### Prerequisites
-
-- Rust toolchain
-- Node.js and npm (for UI development)
-- A compatible quantized LLM model (e.g., Mistral 7B)
-
 ### Installation
 
+#### Pre-built Binaries (Recommended)
+
+We provide pre-built binaries for major platforms with the Anarchy-Inference interpreter bundled in:
+
 ```bash
+# Download the latest release for your platform
+# Windows
+curl -LO https://github.com/APiTJLillo/anarchy-agent/releases/latest/download/anarchy-agent-windows.zip
+unzip anarchy-agent-windows.zip
+
+# macOS
+curl -LO https://github.com/APiTJLillo/anarchy-agent/releases/latest/download/anarchy-agent-macos.tar.gz
+tar -xzf anarchy-agent-macos.tar.gz
+
+# Linux
+curl -LO https://github.com/APiTJLillo/anarchy-agent/releases/latest/download/anarchy-agent-linux.tar.gz
+tar -xzf anarchy-agent-linux.tar.gz
+```
+
+#### Building from Source (For Developers)
+
+If you prefer to build from source:
+
+```bash
+# Prerequisites:
+# - Rust toolchain
+# - Node.js and npm (for UI development)
+
 # Clone the repository
 git clone https://github.com/APiTJLillo/anarchy-agent.git
 cd anarchy-agent
@@ -52,13 +73,25 @@ cd anarchy-agent
 cargo build --release
 ```
 
+### LLM Model Setup
+
+The agent requires a local LLM model to function:
+
+```bash
+# Create the models directory
+mkdir -p models
+
+# Download a compatible model (example using Mistral 7B)
+curl -L https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q4_0.gguf -o models/mistral-7b-instruct-v0.2.Q4_0.gguf
+```
+
 ### Running the Agent
 
 ```bash
-# Start the agent with default settings
-cargo run --release
+# Using pre-built binary
+./anarchy-agent
 
-# Or use the built binary
+# Or if built from source
 ./target/release/anarchy-agent
 ```
 
