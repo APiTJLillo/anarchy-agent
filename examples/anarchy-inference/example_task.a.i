@@ -1,31 +1,34 @@
+// Load the shared string dictionary
+🔠("string_dictionary.json");
+
 ƒmain() {
-    ⌽("Starting example task...");
+    ⌽(:start_example);
     
     // List files in current directory
-    ⌽("Listing files in current directory:");
+    ⌽(:listing_files);
     ιfiles = 📂(".");
     ∀(files, λfile {
         ⌽(file);
     });
     
     // Fetch a webpage
-    ⌽("Fetching example.com...");
+    ⌽(:fetching_webpage);
     ιresponse = ↗("https://example.com");
-    ⌽(`Status code: ${response.s}`);
+    ⌽(`${:status_code}${response.s}`);
     
     // Extract and display content
     ιcontent = response.b;
     ιtitle_match = content.match(/<title>(.+?)<\/title>/);
     
     if (title_match) {
-        ⌽(`Page title: ${title_match[1]}`);
+        ⌽(`${:page_title}${title_match[1]}`);
     }
     
     // Save content to file
     ✍("example_page.html", content);
-    ⌽("Saved page content to example_page.html");
+    ⌽(:saved_content);
     
-    ⟼("Example task completed successfully");
+    ⟼(:task_completed);
 }
 
 main();

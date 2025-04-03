@@ -1,16 +1,19 @@
-⌽("Anarchy Agent Examples");
-⌽("=====================");
+// Load the shared string dictionary
+🔠("string_dictionary.json");
+
+⌽(:title);
+⌽(:separator);
 ⌽("");
 
-⌽("Available examples:");
-⌽("1. Basic task (file operations and web requests)");
-⌽("2. Browser automation");
-⌽("3. File system operations");
-⌽("4. Memory operations");
-⌽("5. Complete workflow");
+⌽(:available);
+⌽(:example1);
+⌽(:example2);
+⌽(:example3);
+⌽(:example4);
+⌽(:example5);
 ⌽("");
 
-⌽("To run an example, use:");
-⌽("./anarchy-agent --example <example_name>");
+⌽(:run_instruction);
+⌽(:command_format);
 ⌽("");
-⌽("Example: ./anarchy-agent --example example_task");
+⌽(:example_command);

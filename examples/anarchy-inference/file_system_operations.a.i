@@ -1,68 +1,71 @@
+// Load the shared string dictionary
+🔠("string_dictionary.json");
+
 ƒmain() {
-    ⌽("Starting file system operations example...");
+    ⌽(:fs_start);
     
     // Create a directory
-    ⌽("Creating directory 'test_dir'...");
+    ⌽(:creating_dir);
     !("mkdir -p test_dir");
     
     // Create some test files
-    ⌽("Creating test files...");
-    ✍("test_dir/file1.txt", "This is the first test file");
-    ✍("test_dir/file2.txt", "This is the second test file");
-    ✍("test_dir/file3.txt", "This is the third test file");
+    ⌽(:creating_files);
+    ✍("test_dir/file1.txt", :file1_content);
+    ✍("test_dir/file2.txt", :file2_content);
+    ✍("test_dir/file3.txt", :file3_content);
     
     // List directory contents
-    ⌽("Listing directory contents...");
+    ⌽(:listing_dir);
     ιfiles = 📂("test_dir");
     ∀(files, λfile {
         ⌽(file);
     });
     
     // Read file contents
-    ⌽("Reading file contents...");
+    ⌽(:reading_files);
     ιcontent1 = 📖("test_dir/file1.txt");
-    ⌽(`File 1 content: ${content1}`);
+    ⌽(`${:file_content}${content1}`);
     
     // Append to a file
-    ⌽("Appending to file...");
+    ⌽(:appending_file);
     ιcontent2 = 📖("test_dir/file2.txt");
-    ✍("test_dir/file2.txt", content2 + "\nThis is an appended line");
+    ✍("test_dir/file2.txt", content2 + :append_line);
     
     // Read the modified file
     ιupdated_content = 📖("test_dir/file2.txt");
-    ⌽(`Updated file 2 content: ${updated_content}`);
+    ⌽(`${:updated_content}${updated_content}`);
     
     // Copy a file
-    ⌽("Copying file...");
+    ⌽(:copying_file);
     ⧉("test_dir/file3.txt", "test_dir/file3_copy.txt");
     
     // Move/rename a file
-    ⌽("Moving/renaming file...");
+    ⌽(:moving_file);
     ↷("test_dir/file1.txt", "test_dir/file1_renamed.txt");
     
     // Check if file exists
-    ⌽("Checking if files exist...");
+    ⌽(:checking_exists);
     ιexists1 = ?("test_dir/file1.txt");
     ιexists2 = ?("test_dir/file1_renamed.txt");
-    ⌽(`Original file exists: ${exists1}`);
-    ⌽(`Renamed file exists: ${exists2}`);
+    ⌽(`${:original_exists}${exists1}`);
+    ⌽(`${:renamed_exists}${exists2}`);
     
     // List directory contents again
-    ⌽("Listing directory contents after operations...");
+    ⌽(:listing_after);
     ιupdated_files = 📂("test_dir");
     ∀(updated_files, λfile {
         ⌽(file);
     });
     
     // Remove a file
-    ⌽("Removing a file...");
+    ⌽(:removing_file);
     ✂("test_dir/file3_copy.txt");
     
     // Clean up (remove directory)
-    ⌽("Cleaning up...");
+    ⌽(:cleaning_up);
     ✂("test_dir");
     
-    ⟼("File system operations example completed successfully");
+    ⟼(:fs_completed);
 }
 
 main();
