@@ -31,6 +31,14 @@ fantoccini = "0.19" # WebDriver client
 # UI (Tauri)
 tauri = { version = "1.4", features = ["api-all"] }
 
+# Internal workspace dependencies
+core = { path = "src/core" }
+planner = { path = "src/planner" }
+executor = { path = "src/executor" }
+memory = { path = "src/memory" }
+browser = { path = "src/browser" }
+system = { path = "src/system" }
+
 [build-dependencies]
 tauri-build = { version = "1.4", features = [] }
 

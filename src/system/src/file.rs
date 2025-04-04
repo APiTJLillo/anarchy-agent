@@ -1,5 +1,6 @@
 use anyhow::Result;
 use std::path::{Path, PathBuf};
+use log::info;
 
 use crate::error::Error;
 use crate::sandbox::Sandbox;
@@ -62,7 +63,7 @@ pub mod file {
     pub fn write_file(
         working_dir: &Path,
         path: &str,
-        contents: &str,
+        _contents: &str,
         sandbox: &Sandbox,
     ) -> Result<()> {
         // Validate and normalize the path
@@ -75,7 +76,7 @@ pub mod file {
         // std::fs::write(&full_path, contents)?;
         
         // For now, just log the operation
-        ⌽("Writing to file: {}", path);
+        info!("Writing to file: {}", path);
         
         Ok(())
     }
@@ -100,7 +101,7 @@ pub mod file {
         // }
         
         // For now, just log the operation
-        ⌽("Removing path: {}", path);
+        info!("Removing path: {}", path);
         
         Ok(())
     }
@@ -124,7 +125,7 @@ pub mod file {
         // std::fs::copy(&full_src, &full_dst)?;
         
         // For now, just log the operation
-        ⌽("Copying file from {} to {}", src, dst);
+        info!("Copying file from {} to {}", src, dst);
         
         Ok(())
     }
@@ -148,7 +149,7 @@ pub mod file {
         // std::fs::rename(&full_src, &full_dst)?;
         
         // For now, just log the operation
-        ⌽("Moving file from {} to {}", src, dst);
+        info!("Moving file from {} to {}", src, dst);
         
         Ok(())
     }

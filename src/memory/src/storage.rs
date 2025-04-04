@@ -1,6 +1,7 @@
 use anyhow::Result;
 use std::path::Path;
 use std::time::{SystemTime, UNIX_EPOCH};
+use log::info;
 
 use crate::config::Config;
 use crate::error::Error;
@@ -80,7 +81,7 @@ impl Database {
     }
     
     /// Store an execution in the database
-    pub fn store_execution(&self, task: &str, code: &str, result: &str) -> Result<()> {
+    pub fn store_execution(&self, _task: &str, _code: &str, _result: &str) -> Result<()> {
         // In a real implementation, this would insert a record into the database
         // let conn = self.connection.as_ref().ok_or_else(|| {
         //     Error::DatabaseConnectionError("Database not initialized".to_string())
@@ -97,13 +98,13 @@ impl Database {
         // )?;
         
         // For now, just log the operation
-        ⌽("Stored execution: {} at {}", id, timestamp);
+        info!("Stored execution: {} at {}", id, timestamp);
         
         Ok(())
     }
     
     /// Query relevant entries for a task description
-    pub fn query_relevant(&self, task_description: &str) -> Result<Vec<MemoryEntry>> {
+    pub fn query_relevant(&self, _task_description: &str) -> Result<Vec<MemoryEntry>> {
         // In a real implementation, this would query the database for relevant entries
         // let conn = self.connection.as_ref().ok_or_else(|| {
         //     Error::DatabaseConnectionError("Database not initialized".to_string())
@@ -146,7 +147,7 @@ impl Database {
         // )?;
         
         // For now, just log the operation
-        ⌽("Set key-value: {} = {}", key, value);
+        info!("Set key-value: {} = {}", key, value);
         
         Ok(())
     }
@@ -177,7 +178,7 @@ impl Database {
         // conn.execute("DELETE FROM key_values WHERE key = ?", [key])?;
         
         // For now, just log the operation
-        ⌽("Deleted key: {}", key);
+        info!("Deleted key: {}", key);
         
         Ok(())
     }

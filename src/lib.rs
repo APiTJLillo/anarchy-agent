@@ -2,38 +2,38 @@
 // This file re-exports all the modules for easy access
 
 pub mod core {
-    pub use crate::core::Agent;
-    pub use crate::core::Config;
-    pub use crate::core::Error;
-    pub use crate::core::Core;
+    pub use core::Agent;
+    pub use core::Config;
+    pub use core::Error;
+    pub use core::Core;
 }
 
 pub mod planner {
-    pub use crate::planner::Planner;
-    pub use crate::planner::Config;
-    pub use crate::planner::Error;
+    pub use planner::Planner;
+    pub use planner::Config;
+    pub use planner::Error;
 }
 
 pub mod executor {
-    pub use crate::executor::Executor;
-    pub use crate::executor::Config;
-    pub use crate::executor::Error;
+    pub use executor::Executor;
+    pub use executor::Config;
+    pub use executor::Error;
 }
 
 pub mod memory {
-    pub use crate::memory::Memory;
-    pub use crate::memory::Config;
-    pub use crate::memory::Error;
+    pub use memory::Memory;
+    pub use memory::Config;
+    pub use memory::Error;
 }
 
 pub mod browser {
-    pub use crate::browser::Browser;
-    pub use crate::browser::Config;
-    pub use crate::browser::Error;
+    pub use browser::Browser;
+    pub use browser::Config;
+    pub use browser::Error;
 }
 
 pub mod system {
-    pub use crate::system::System;
-    pub use crate::system::Config;
-    pub use crate::system::Error;
+    pub use system::System;
+    pub use system::Config;
+    pub use system::Error;
 }

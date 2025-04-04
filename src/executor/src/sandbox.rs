@@ -1,6 +1,7 @@
 use anyhow::Result;
 use std::sync::Arc;
 use tokio::sync::Mutex;
+use log::warn;
 
 use crate::config::Config;
 use crate::error::Error;
@@ -24,14 +25,14 @@ impl Sandbox {
     pub fn initialize(&self) -> Result<()> {
         // In a real implementation, this would set up the sandbox environment
         if !self.config.sandbox_enabled {
-            ⌽("Warning: Sandbox is disabled. Code will run with full permissions.");
+            warn!("Warning: Sandbox is disabled. Code will run with full permissions.");
         }
         
         Ok(())
     }
     
     /// Register a symbol handler
-    pub fn register_symbol<F>(&self, symbol: &str, handler: F) -> Result<()>
+    pub fn register_symbol<F>(&self, symbol: &str, _handler: F) -> Result<()>
     where
         F: Fn(&[&str]) -> Result<String> + Send + Sync + 'static,
     {
@@ -52,7 +53,7 @@ impl Sandbox {
         // For now, just return a placeholder result
         
         if !self.config.sandbox_enabled {
-            ⌽("Warning: Executing code without sandbox protection.");
+            warn!("Warning: Executing code without sandbox protection.");
         }
         
         // Simulate execution

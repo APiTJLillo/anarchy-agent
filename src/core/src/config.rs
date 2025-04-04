@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 
 /// Configuration for the Core module
+#[derive(Clone)]
 pub struct Config {
     /// Path to the LLM model
     pub llm_model_path: PathBuf,
@@ -16,6 +17,18 @@ pub struct Config {
     
     /// Whether to enable sandboxing for system operations
     pub sandbox_enabled: bool,
+    
+    /// Path to the Anarchy-Inference file to execute
+    pub file_path: Option<PathBuf>,
+    
+    /// Name of the example to run
+    pub example_name: Option<String>,
+    
+    /// Whether to run in REPL mode
+    pub repl_mode: bool,
+    
+    /// Whether to enable verbose logging
+    pub verbose: bool,
 }
 
 impl Default for Config {
@@ -26,6 +39,10 @@ impl Default for Config {
             headless: true,
             working_directory: PathBuf::from("./workspace"),
             sandbox_enabled: true,
+            file_path: None,
+            example_name: None,
+            repl_mode: false,
+            verbose: false,
         }
     }
 }

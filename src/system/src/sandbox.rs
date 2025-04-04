@@ -1,5 +1,6 @@
 use anyhow::Result;
 use std::path::{Path, PathBuf};
+use log::warn;
 
 use crate::config::Config;
 use crate::error::Error;
@@ -21,7 +22,7 @@ impl Sandbox {
     pub fn initialize(&self) -> Result<()> {
         // In a real implementation, this would set up the sandbox environment
         if !self.config.sandbox_enabled {
-            ⌽("Warning: Sandbox is disabled. System operations will run with full permissions.");
+            warn!("Warning: Sandbox is disabled. System operations will run with full permissions.");
         }
         
         // Create the working directory if it doesn't exist
@@ -29,7 +30,7 @@ impl Sandbox {
         if !working_dir.exists() {
             // In a real implementation, this would create the directory
             // std::fs::create_dir_all(working_dir)?;
-            ⌽("Creating working directory: {:?}", working_dir);
+            warn!("Creating working directory: {:?}", working_dir);
         }
         
         Ok(())
@@ -90,5 +91,5 @@ fn is_path_within(path: &Path, container: &Path) -> bool {
     let path_str = path.to_string_lossy();
     let container_str = container.to_string_lossy();
     
-    path_str.starts_with(&container_str)
+    path_str.starts_with(&*container_str)
 }

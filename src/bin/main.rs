@@ -16,7 +16,8 @@ async fn main() -> Result<()> {
     let config = parse_args(&args)?;
 
     // Create and initialize the agent
-    let agent = Agent::with_config(config).await?;
+    // Clone the config before passing it to Agent::with_config()
+    let agent = Agent::with_config(config.clone()).await?;
     agent.initialize().await?;
 
     // Handle different execution modes
@@ -125,7 +126,7 @@ fn print_usage() {
     println!("");
     println!("Options:");
     println!("  --help, -h             Display this help message");
-    println!("  --example <name>       Run an example (e.g., example_task, browser_automation)");
+    println!("  --example <n>       Run an example (e.g., example_task, browser_automation)");
     println!("  --repl                 Start an interactive REPL session");
     println!("  --model <path>         Specify path to a local LLM model");
     println!("  --verbose              Enable verbose logging");

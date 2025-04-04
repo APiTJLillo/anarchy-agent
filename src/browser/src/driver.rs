@@ -1,5 +1,6 @@
 use anyhow::Result;
 use std::time::Duration;
+use log::info;
 
 use crate::config::Config;
 use crate::error::Error;
@@ -36,7 +37,7 @@ impl WebDriver {
         // client.goto(url).await?;
         
         // For now, just log the operation
-        ⌽("Navigating to: {}", url);
+        info!("Navigating to: {}", url);
         
         Ok(())
     }
@@ -52,7 +53,7 @@ impl WebDriver {
         // element.click().await?;
         
         // For now, just log the operation
-        ⌽("Clicking on: {}", selector);
+        info!("Clicking on: {}", selector);
         
         Ok(())
     }
@@ -68,7 +69,7 @@ impl WebDriver {
         // element.send_keys(text).await?;
         
         // For now, just log the operation
-        ⌽("Inputting text into {}: {}", selector, text);
+        info!("Inputting text into {}: {}", selector, text);
         
         Ok(())
     }
@@ -113,7 +114,7 @@ impl WebDriver {
         // }
         
         // For now, just log the operation
-        ⌽("Closing browser");
+        info!("Closing browser");
         
         Ok(())
     }

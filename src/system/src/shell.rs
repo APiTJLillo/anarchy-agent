@@ -1,11 +1,13 @@
 use anyhow::Result;
 use std::path::Path;
 use std::time::Duration;
+use std::fmt;
 
 use crate::error::Error;
 use crate::sandbox::Sandbox;
 
 /// Shell execution result
+#[derive(Debug)]
 pub struct ShellResult {
     /// Standard output
     pub stdout: String,
@@ -23,7 +25,7 @@ pub mod shell {
     
     /// Execute a shell command
     pub fn execute(
-        working_dir: &Path,
+        _working_dir: &Path,
         command: &str,
         sandbox: &Sandbox,
     ) -> Result<ShellResult> {

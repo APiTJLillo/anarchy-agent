@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 
 /// Configuration for the Executor module
+#[derive(Clone)]
 pub struct Config {
     /// Whether to enable sandboxing
     pub sandbox_enabled: bool,

@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 
 /// Configuration for the System module
+#[derive(Clone)]
 pub struct Config {
     /// Working directory for file operations
     pub working_directory: PathBuf,
