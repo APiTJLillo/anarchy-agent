@@ -13,6 +13,9 @@ Anarchy Agent is an autonomous agent system that uses the minimalist, token-effi
 - **Modular Architecture**: Composed of planner, executor, memory, browser automation, and system tools
 - **Secure Execution**: Sandboxed execution of generated Anarchy-Inference code
 - **Cross-Platform**: Built with Rust backend and Tauri/web frontend
+- **Interactive Input**: File-based input/output mechanism with emoji operators (📥, 📤, 📩)
+- **Enhanced Memory**: Vector-based semantic search with tags, importance scoring, and access tracking
+- **Pattern Matching**: Regex-based pattern matching with template-based code generation
 
 ## How It's Different
 
@@ -27,11 +30,52 @@ Unlike other autonomous agent frameworks like Auto-GPT or Manus, Anarchy Agent:
 
 The system consists of several core modules:
 
-- **Planner**: Generates high-level plans using the LLM
+- **Planner**: Generates high-level plans using the LLM with pattern matching
 - **Executor**: Safely runs Anarchy-Inference code in a sandboxed environment
-- **Memory**: Stores and retrieves information from previous executions
+- **Memory**: Stores and retrieves information with semantic search capabilities
 - **Browser**: Automates web browsing and interaction
 - **System**: Interfaces with the operating system for file and process operations
+
+## New Features
+
+### Input Function Workaround
+
+The input function workaround provides a file-based solution for interactive capabilities:
+
+- **📥 (get_input_from_file)**: Reads content from an input file
+- **📤 (write_output_to_file)**: Writes content to an output file
+- **📩 (wait_for_input_file)**: Waits for an input file to appear
+
+Example:
+```
+// Write a prompt to an output file
+📤("prompt.txt", "What is your name?");
+
+// Wait for user to create input file (with 30 second timeout)
+ιinput_ready = 📩("response.txt", "30000");
+
+// Read the input file
+ιuser_input = 📥("response.txt");
+```
+
+### Enhanced Memory System
+
+The memory system now includes:
+
+- **Vector-based semantic search** for finding relevant information
+- **Tag-based searching** for categorized memory entries
+- **Importance scoring** to prioritize critical information
+- **Access tracking** to maintain frequently used information longer
+- **Structured data support** for complex information storage
+
+### Improved Reasoning System
+
+The reasoning system now features:
+
+- **Pattern matching** using regex with named capture groups
+- **Template-based code generation** with variable substitution
+- **Reasoning history** for tracking and explaining decisions
+- **Default patterns** for common operations (file, HTTP, input, memory)
 
 ## Getting Started
 
@@ -110,13 +154,15 @@ Agent will:
 
 ## Anarchy-Inference Examples
 
-The repository includes several example Anarchy-Inference scripts (`.a.i` files) in the `examples/anarchy-inference` directory:
+The repository includes several example Anarchy-Inference scripts (`.a.i` files) in the `examples_ai` directory:
 
 - `example_task.a.i`: Basic file operations and web requests
 - `browser_automation.a.i`: Web browser automation
 - `file_system_operations.a.i`: File system operations
 - `memory_operations.a.i`: Memory and state persistence
 - `complete_workflow.a.i`: End-to-end workflow example
+- `input_workaround_example.a.i`: Demonstrates the input function workaround
+- `corrected_syntax_example.a.i`: Shows proper Anarchy Inference syntax conventions
 
 To run these examples:
 
@@ -127,6 +173,29 @@ To run these examples:
 # Or specify a custom script
 ./anarchy-agent --script path/to/your_script.a.i
 ```
+
+## Testing
+
+The repository includes test files for all features in the `tests` directory:
+
+- `input_workaround_test.a.i`: Tests the input function workaround
+- `memory_system_test.a.i`: Tests the enhanced memory system
+- `reasoning_system_test.a.i`: Tests the improved reasoning system
+- `integration_test.a.i`: Tests how all components work together
+
+Run the tests using:
+
+```bash
+./run_tests.sh
+```
+
+## Documentation
+
+For detailed information about the implemented features, see:
+
+- `IMPLEMENTATION_REPORT.md`: Technical details about all implementations
+- `USAGE_GUIDE.md`: Practical guide for using the new features
+- `docs/input_workaround.md`: Documentation for the input function workaround
 
 ## Contributing
 

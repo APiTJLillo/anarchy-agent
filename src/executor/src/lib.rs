@@ -1,19 +1,21 @@
-use anyhow::Result;
-use std::sync::Arc;
-use tokio::sync::Mutex;
-
+// Add input_workaround module
 mod config;
 mod error;
 mod parser;
 mod sandbox;
 mod symbols;
+mod input_workaround;
 
 pub use config::Config;
 pub use error::Error;
+pub use input_workaround::InputWorkaround;
 
 use memory::Memory;
 use browser::Browser;
 use system::System;
+use std::sync::Arc;
+use tokio::sync::Mutex;
+use anyhow::Result;
 
 /// Executor module that safely runs Anarchy-Inference code in a sandboxed environment
 pub struct Executor {
@@ -22,6 +24,7 @@ pub struct Executor {
     browser: Arc<Mutex<Browser>>,
     system: Arc<Mutex<System>>,
     sandbox: sandbox::Sandbox,
+    input_workaround: Arc<Mutex<InputWorkaround>>,
 }
 
 impl Executor {
@@ -34,12 +37,18 @@ impl Executor {
         let config = Config::default();
         let sandbox = sandbox::Sandbox::new(&config)?;
         
+        // Initialize input workaround with default directory
+        let input_workaround = Arc::new(Mutex::new(
+            InputWorkaround::new(&config.input_directory)?
+        ));
+        
         Ok(Self {
             config,
             memory,
             browser,
             system,
             sandbox,
+            input_workaround,
         })
     }
     
@@ -70,6 +79,9 @@ impl Executor {
         
         // Register memory symbols
         symbols::register_memory_symbols(&self.sandbox, Arc::clone(&self.memory))?;
+        
+        // Register input workaround symbols
+        input_workaround::register_input_symbols(&self.sandbox, Arc::clone(&self.input_workaround))?;
         
         Ok(())
     }

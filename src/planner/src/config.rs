@@ -1,34 +1,35 @@
 use std::path::PathBuf;
 
-/// Configuration for the LLM Engine
+/// Configuration for the planner module
 pub struct Config {
-    /// Path to the LLM model
-    pub model_path: PathBuf,
+    /// System prompt for the LLM
+    pub system_prompt: String,
     
-    /// Maximum tokens to generate
+    /// Maximum number of tokens to generate
     pub max_tokens: usize,
     
     /// Temperature for generation
     pub temperature: f32,
     
-    /// Top-p sampling
-    pub top_p: f32,
+    /// Directory for pattern definitions
+    pub patterns_dir: PathBuf,
     
-    /// System prompt for the LLM
-    pub system_prompt: String,
+    /// Maximum number of history entries to keep
+    pub max_history_size: usize,
+    
+    /// Whether to use the reasoning system
+    pub use_reasoning_system: bool,
 }
 
 impl Default for Config {
     fn default() -> Self {
         Self {
-            model_path: PathBuf::from("./models/mistral-7b-instruct-v0.2.Q4_0.gguf"),
-            max_tokens: 2048,
+            system_prompt: "You are an AI assistant that generates Anarchy-Inference code to accomplish tasks. Use the symbolic syntax (e.g., !, ↗, 📂, etc.) for all operations.".to_string(),
+            max_tokens: 1000,
             temperature: 0.7,
-            top_p: 0.9,
-            system_prompt: String::from(
-                "You are an AI assistant that generates Anarchy-Inference code to accomplish tasks. \
-                Use the symbolic syntax of Anarchy-Inference for all operations."
-            ),
+            patterns_dir: PathBuf::from("./data/patterns"),
+            max_history_size: 20,
+            use_reasoning_system: true,
         }
     }
 }

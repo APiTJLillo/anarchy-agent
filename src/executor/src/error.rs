@@ -1,29 +1,37 @@
 use thiserror::Error;
 
-/// Error types for the Executor module
+/// Errors that can occur in the executor module
 #[derive(Error, Debug)]
 pub enum Error {
+    /// Error during sandbox initialization
     #[error("Sandbox initialization error: {0}")]
     SandboxInitializationError(String),
     
-    #[error("Parser error: {0}")]
-    ParserError(String),
+    /// Error during code execution
+    #[error("Code execution error: {0}")]
+    CodeExecutionError(String),
     
-    #[error("Execution error: {0}")]
-    ExecutionError(String),
-    
+    /// Error during symbol registration
     #[error("Symbol registration error: {0}")]
     SymbolRegistrationError(String),
     
-    #[error("Resource limit exceeded: {0}")]
-    ResourceLimitExceeded(String),
+    /// Error during code parsing
+    #[error("Code parsing error: {0}")]
+    CodeParsingError(String),
     
-    #[error("Permission denied: {0}")]
-    PermissionDenied(String),
+    /// Error during sandbox shutdown
+    #[error("Sandbox shutdown error: {0}")]
+    SandboxShutdownError(String),
     
-    #[error("Timeout error: {0}")]
-    TimeoutError(String),
+    /// Error during input operations
+    #[error("Input error: {0}")]
+    InputError(String),
     
-    #[error("Unknown error: {0}")]
-    Unknown(String),
+    /// Error during output operations
+    #[error("Output error: {0}")]
+    OutputError(String),
+    
+    /// Error during file waiting
+    #[error("File wait error: {0}")]
+    FileWaitError(String),
 }
